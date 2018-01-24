@@ -10,7 +10,7 @@ const jsonwebtoken = require("jsonwebtoken");
 const cors = require('cors');
 
 //Port number
-const port = process.env.PORT || 6600;
+const port = process.env.PORT || 6601;
 
 mongoose.connect(config.database);
 

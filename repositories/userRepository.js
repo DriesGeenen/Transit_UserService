@@ -11,18 +11,18 @@ exports.getUserById = function (id) {
     return User.findById(id).select('-password');
 };
 
-exports.getUserByName = function (name) {
-    return User.findOne({name: name});
+exports.getUserByEmail = function (email) {
+    return User.findOne({email: email});
 };
 
 exports.addUser = function (newUser) {
     return newUser.save();
 };
 
-exports.updateUser = function (req) {
-    return User.update({_id: req.params.id}, req.body);
+exports.updateUser = function (id, user) {
+    return User.update({_id: id}, user);
 };
 
-exports.deleteUser = function (req) {
-    return User.remove({_id: req.params.id});
+exports.deleteUser = function (id) {
+    return User.remove({_id: id});
 };
