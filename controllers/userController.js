@@ -92,6 +92,9 @@ exports.getProfile = function (req, res) {
 exports.getUserByEmail = function (req, res) {
     var promise = UserRepository.getUserByEmail(req.params.email);
     promise.then(function (user) {
+        if (!user){
+            return res.json({success: false, data: "Email not found"});
+        }
         return res.json({success: true, data: user});
     }, function (err) {
         return res.status(500).json({success: false, msg: 'Failed to get user by email', error: err});
