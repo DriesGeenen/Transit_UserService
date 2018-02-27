@@ -1,10 +1,7 @@
 'use strict';
 
 var UserRepository = require('../repositories/userRepository');
-const User = require('../models/user');
-const bcrypt = require('bcryptjs');
-const config = require('../config/config');
-const jwt = require('jsonwebtoken');
+var User = require('../models/user');
 
 exports.getAllUsers = function (req, res) {
     var promise = UserRepository.getAllUsers();
@@ -46,7 +43,7 @@ exports.updateUser = function (req, res) {
 };
 
 exports.addUser = function (req, res) {
-    const newUser = new User(req.body);
+    var newUser = new User(req.body);
     var promise = UserRepository.addUser(newUser);
     promise.then(function (user) {
         return res.json({success: true, msg: 'User created', data: user});
@@ -56,8 +53,8 @@ exports.addUser = function (req, res) {
 };
 
 /*exports.authenticateUser = function (req, res) {
-    const email = req.body.email;
-    const password = req.body.password;
+    var email = req.body.email;
+    var password = req.body.password;
     var user;
 
     var promise = UserRepository.getUserByEmail(email);
@@ -71,7 +68,7 @@ exports.addUser = function (req, res) {
         return res.status(500).json({success: false, msg: 'Failed to get user', error: err});
     }).then(function (isMatch) {
         if (isMatch) {
-            const token = jwt.sign({data: user}, config.secret, {
+            var token = jwt.sign({data: user}, config.secret, {
                 expiresIn: 604800
             });
             return res.json({

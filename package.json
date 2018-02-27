@@ -1,7 +1,7 @@
 {
-  "name": "Project4-0",
+  "name": "UserService",
   "version": "1.0.0",
-  "description": "Oefening resultaten",
+  "description": "Proof-of-concept user service for Agilians",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
